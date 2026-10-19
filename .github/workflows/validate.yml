@@ -1,0 +1,28 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate JSON files
+        run: |
+          for f in $(find . -name '*.json' -not -path './.git/*'); do
+            python3 -m json.tool "$f" > /dev/null
+            echo "OK $f"
+          done
+
+      - name: Regenerate ZCode config
+        run: node scripts/generate-zcode-config.mjs
+
+      - name: Check generated config is committed
+        run: git diff --exit-code

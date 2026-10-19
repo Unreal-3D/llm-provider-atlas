@@ -1,0 +1,63 @@
+id: tencent-token-plan
+name: 腾讯云 Token Plan
+name_en: Tencent Cloud Token Plan
+vendor: Tencent Cloud
+status: active
+
+protocols:
+  anthropic:
+    type: anthropic-messages
+    base_url: https://tokenhub.tencentmaas.com/plan/anthropic
+    messages_endpoint: https://tokenhub.tencentmaas.com/plan/anthropic/v1/messages
+    legacy_base_url: https://api.lkeap.cloud.tencent.com/plan/anthropic
+  openai:
+    type: openai-chat-completions
+    base_url: https://tokenhub.tencentmaas.com/plan/v3
+    chat_endpoint: https://tokenhub.tencentmaas.com/plan/v3/chat/completions
+    legacy_base_url: https://api.lkeap.cloud.tencent.com/plan/v3
+
+console:
+  token_plan: https://console.cloud.tencent.com/tokenhub/tokenplan
+  model_square: https://console.cloud.tencent.com/tokenhub/models
+  model_detail: "https://console.cloud.tencent.com/tokenhub/models/detail?modelId={model_id}&regionId=1&from=all"
+
+auth:
+  type: api-key
+  header_anthropic: x-api-key
+  header_openai: Authorization
+  scheme_openai: Bearer
+  note: Token Plan 个人版所有套餐共享同一个 API Key
+
+resources:
+  models_file: models.json
+  model_count: 13
+  enabled_in_zcode:
+    - deepseek/deepseek-flash
+    - glm-5.3-flash
+    - hy4-preview
+    - mimo-v2.6-flash
+    - minimax-m3
+    - glm-5.3
+    - kimi-k3
+  removed_from_zcode:
+    - deepseek-v4-flash-202605
+    - deepseek-v4-pro-202606
+    - glm-5.2
+    - glm-5.1
+    - minimax-m2.7
+    - kimi-k2.7-code
+    - auto
+    - tc-code-latest
+
+metadata:
+  pricing_unit: CNY per 1M tokens
+  context_unit: tokens
+  context_conversion: 1024-based (1k = 1024, 1M = 1048576)
+  updated_at: "2026-10-20"
+  source: Tencent Cloud TokenHub console
+
+notes:
+  - 旧域名 api.lkeap.cloud.tencent.com 控制台标注为“即将下线”，新接入优先使用 tokenhub.tencentmaas.com。
+  - 模型广场共 122 个模型，Token Plan 个人版套餐只包含其中 13 个。
+  - auto 是路由模型，没有独立上下文窗口；当前未纳入 ZCode 配置。
+  - 控制台的“1024k”按 1024 进制换算为 1048576。

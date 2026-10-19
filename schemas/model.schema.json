@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Unreal-3D/llm-provider-atlas/schemas/model.schema.json",
+  "title": "Canonical LLM Model Record",
+  "description": "Provider-agnostic model metadata used by all targets.",
+  "type": "object",
+  "required": ["primaryModelId", "modelIds", "displayName", "normalized"],
+  "properties": {
+    "displayName": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable model name."
+    },
+    "modelName": {
+      "type": "string",
+      "description": "Provider's model name, if different from displayName."
+    },
+    "primaryModelId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Canonical model ID used in API requests."
+    },
+    "modelIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "All accepted IDs and aliases."
+    },
+    "description": { "type": "string" },
+    "summary": { "type": "string" },
+    "brand": { "type": "string" },
+    "modelSeries": { "type": "string" },
+    "modelType": { "type": "string" },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "status": { "type": "string" },
+    "releaseAt": { "type": "string" },
+    "updatedAt": { "type": "string" },
+    "spec": {
+      "type": "object",
+      "description": "Raw provider spec strings, kept for traceability.",
+      "properties": {
+        "ContextLength": { "type": "string" },
+        "MaxInputToken": { "type": "string" },
+        "MaxOutputToken": { "type": "string" },
+        "TPM": { "type": "string" },
+        "QPM": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "normalized": {
+      "type": "object",
+      "description": "Integer token values normalized to 1024-based units.",
+      "required": ["contextWindow"],
+      "properties": {
+        "contextWindow": { "type": "integer", "minimum": 1 },
+        "maxInputTokens": { "type": ["integer", "null"], "minimum": 1 },
+        "maxOutputTokens": { "type": ["integer", "null"], "minimum": 1 }
+      },
+      "additionalProperties": true
+    },
+    "charging": {
+      "type": "array",
+      "description": "Raw pricing blocks from the provider.",
+      "items": { "type": "object" }
+    },
+    "freeTrial": { "type": "object" },
+    "apiReference": { "type": ["string", "null"] },
+    "capabilities": {
+      "type": "array",
+      "description": "Provider capability records, e.g. InputImage, InputVideo, DeepThink.",
+      "items": { "type": "object" }
+    },
+    "extraModelIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "zcode": {
+      "type": "object",
+      "description": "ZCode target hints. Other targets may add their own sections.",
+      "properties": {
+        "selected": { "type": "boolean" },
+        "order": { "type": ["integer", "null"], "minimum": 1 },
+        "contextWindow": { "type": "integer", "minimum": 1 },
+        "maxOutputTokens": { "type": "integer", "minimum": 1 },
+        "reasoningLevels": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "excludedReason": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

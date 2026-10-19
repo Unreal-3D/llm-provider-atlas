@@ -1,0 +1,9 @@
+{
+  "tencent-token-plan": {
+    "providerName": "腾讯云 Token Plan",
+    "group": "standard-personal",
+    "apiType": "anthropic-messages",
+    "baseUrl": "https://tokenhub.tencentmaas.com/plan/anthropic",
+    "apiKeyPlaceholder": "<YOUR_TENCENT_TOKEN_PLAN_API_KEY>"
+  }
+}

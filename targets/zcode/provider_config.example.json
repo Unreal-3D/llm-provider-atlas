@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "config": {
+    "providerConfigRules": {
+      "providerRules": [
+        {
+          "providerId": "tencent-token-plan",
+          "providerName": "腾讯云 Token Plan",
+          "enabled": true,
+          "config": {
+            "group": "standard-personal",
+            "access": {
+              "type": "api-key",
+              "apiKey": "<YOUR_TENCENT_TOKEN_PLAN_API_KEY>"
+            },
+            "api": {
+              "type": "anthropic-messages",
+              "baseUrl": "https://tokenhub.tencentmaas.com/plan/anthropic"
+            },
+            "personalModelIds": [
+              "deepseek/deepseek-flash",
+              "glm-5.3-flash",
+              "hy4-preview",
+              "mimo-v2.6-flash",
+              "minimax-m3",
+              "glm-5.3",
+              "kimi-k3"
+            ],
+            "modelOrder": [
+              "deepseek/deepseek-flash",
+              "glm-5.3-flash",
+              "hy4-preview",
+              "mimo-v2.6-flash",
+              "minimax-m3",
+              "glm-5.3",
+              "kimi-k3"
+            ],
+            "visibility": "visible"
+          }
+        }
+      ]
+    },
+    "modelConfigRules": {
+      "providerModelRules": [],
+      "manualProviderModelRules": [
+        {
+          "modelId": "deepseek/deepseek-flash",
+          "config": {
+            "enabled": true,
+            "properties": {
+              "contextWindow": 1048576,
+              "supportsJsonSchemaOutput": false,
+              "supportsNativeWebSearch": false,
+              "supportsMidConversationSystem": false,
+              "inputFormat": {
+                "supportsImage": true,
+                "supportsVideo": false,
+                "supportsPdf": false
+              }
+            },
+            "optionSpecs": {
+              "reasoningLevel": {
+                "values": [
+                  "low",
+                  "high",
+                  "max"
+                ],
+                "map": "{}"
+              },
+              "maxOutputTokens": {
+                "max": 393216
+              }
+            }
+          },
+          "providerId": "tencent-token-plan"
+        },
+        {
+          "modelId": "glm-5.3-flash",
+          "config": {
+            "enabled": true,
+            "properties": {
+              "contextWindow": 1048576,
+              "supportsJsonSchemaOutput": false,
+              "supportsNativeWebSearch": false,
+              "supportsMidConversationSystem": false,
+              "inputFormat": {
+                "supportsImage": true,
+                "supportsVideo": true,
+                "supportsPdf": false
+              }
+            },
+            "optionSpecs": {
+              "reasoningLevel": {
+                "values": [
+                  "low",
+                  "high",
+                  "max"
+                ],
+                "map": "{}"
+              },
+              "maxOutputTokens": {
+                "max": 131072
+              }
+            }
+          },
+          "providerId": "tencent-token-plan"
+        },
+        {
+          "modelId": "hy4-preview",
+          "config": {
+            "enabled": true,
+            "properties": {
+              "contextWindow": 1048576,
+              "supportsJsonSchemaOutput": false,
+              "supportsNativeWebSearch": false,
+              "supportsMidConversationSystem": false,
+              "inputFormat": {
+                "supportsImage": false,
+                "supportsVideo": false,
+                "supportsPdf": false
+              }
+            },
+            "optionSpecs": {
+              "reasoningLevel": {
+                "values": [
+                  "none",
+                  "high"
+                ],
+                "map": "{}"
+              },
+              "maxOutputTokens": {
+                "max": 65536
+              }
+            }
+          },
+          "providerId": "tencent-token-plan"
+        },
+        {
+          "modelId": "mimo-v2.6-flash",
+          "config": {
+            "enabled": true,
+            "properties": {
+              "contextWindow": 1048576,
+              "supportsJsonSchemaOutput": false,
+              "supportsNativeWebSearch": false,
+              "supportsMidConversationSystem": false,
+              "inputFormat": {
+                "supportsImage": true,
+                "supportsVideo": true,
+                "supportsPdf": false
+              }
+            },
+            "optionSpecs": {
+              "reasoningLevel": {
+                "values": [
+                  "disabled",
+                  "enabled"
+                ],
+                "map": "{}"
+              },
+              "maxOutputTokens": {
+                "max": 131072
+              }
+            }
+          },
+          "providerId": "tencent-token-plan"
+        },
+        {
+          "modelId": "minimax-m3",
+          "config": {
+            "enabled": true,
+            "properties": {
+              "contextWindow": 1048576,
+              "supportsJsonSchemaOutput": false,
+              "supportsNativeWebSearch": false,
+              "supportsMidConversationSystem": false,
+              "inputFormat": {
+                "supportsImage": true,
+                "supportsVideo": true,
+                "supportsPdf": false
+              }
+            },
+            "optionSpecs": {
+              "reasoningLevel": {
+                "values": [
+                  "disabled",
+                  "enabled"
+                ],
+                "map": "{}"
+              },
+              "maxOutputTokens": {
+                "max": 1048576
+              }
+            }
+          },
+          "providerId": "tencent-token-plan"
+        },
+        {
+          "modelId": "glm-5.3",
+          "config": {
+            "enabled": true,
+            "properties": {
+              "contextWindow": 1048576,
+              "supportsJsonSchemaOutput": false,
+              "supportsNativeWebSearch": false,
+              "supportsMidConversationSystem": false,
+              "inputFormat": {
+                "supportsImage": false,
+                "supportsVideo": false,
+                "supportsPdf": false
+              }
+            },
+            "optionSpecs": {
+              "reasoningLevel": {
+                "values": [
+                  "low",
+                  "high",
+                  "max"
+                ],
+                "map": "{}"
+              },
+              "maxOutputTokens": {
+                "max": 131072
+              }
+            }
+          },
+          "providerId": "tencent-token-plan"
+        },
+        {
+          "modelId": "kimi-k3",
+          "config": {
+            "enabled": true,
+            "properties": {
+              "contextWindow": 1048576,
+              "supportsJsonSchemaOutput": false,
+              "supportsNativeWebSearch": false,
+              "supportsMidConversationSystem": false,
+              "inputFormat": {
+                "supportsImage": true,
+                "supportsVideo": true,
+                "supportsPdf": false
+              }
+            },
+            "optionSpecs": {
+              "reasoningLevel": {
+                "values": [
+                  "max"
+                ],
+                "map": "{}"
+              },
+              "maxOutputTokens": {
+                "max": 1048576
+              }
+            }
+          },
+          "providerId": "tencent-token-plan"
+        }
+      ]
+    }
+  }
+}

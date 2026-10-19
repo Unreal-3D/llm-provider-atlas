@@ -1,0 +1,60 @@
+{
+  "provider": "example-provider",
+  "providerName": "Example Provider",
+  "plan": {
+    "name": "Example Plan",
+    "tier": "Pro"
+  },
+  "scrapedAt": "YYYY-MM-DDTHH:MM:SSZ",
+  "source": "Example console",
+  "totalModelsInSquare": 0,
+  "models": [
+    {
+      "displayName": "Example Model",
+      "modelName": "Example Model",
+      "primaryModelId": "example-model",
+      "modelIds": ["example-model", "example-model-alias"],
+      "description": "Short description.",
+      "brand": "Example Vendor",
+      "modelSeries": "Example Series",
+      "modelType": "Text",
+      "tags": ["文本生成"],
+      "status": "online",
+      "releaseAt": "YYYY-MM-DDTHH:MM:SS+08:00",
+      "spec": {
+        "ContextLength": "128k",
+        "MaxInputToken": "128k",
+        "MaxOutputToken": "16k",
+        "TPM": "1000000",
+        "QPM": "60"
+      },
+      "normalized": {
+        "contextWindow": 131072,
+        "maxInputTokens": 131072,
+        "maxOutputTokens": 16384
+      },
+      "charging": [
+        {
+          "ChargingItems": [
+            { "DisplayName": "输入", "Price": "1", "PriceUnit": "元/百万tokens" },
+            { "DisplayName": "输出", "Price": "4", "PriceUnit": "元/百万tokens" },
+            { "DisplayName": "缓存命中", "Price": "0.02", "PriceUnit": "元/百万tokens" }
+          ]
+        }
+      ],
+      "freeTrial": null,
+      "apiReference": "https://example.com/docs",
+      "capabilities": [
+        { "CapabilityName": "InputText", "CapabilityValue": "true" },
+        { "CapabilityName": "OutputText", "CapabilityValue": "true" }
+      ],
+      "zcode": {
+        "selected": true,
+        "order": 1,
+        "contextWindow": 131072,
+        "maxOutputTokens": 16384,
+        "reasoningLevels": ["enabled"]
+      }
+    }
+  ]
+}

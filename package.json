@@ -1,0 +1,15 @@
+{
+  "name": "llm-provider-atlas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Provider-agnostic LLM model catalog and coding-agent config generator.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "generate:zcode": "node scripts/generate-zcode-config.mjs",
+    "generate:zcode:tencent": "node scripts/generate-zcode-config.mjs tencent-token-plan"
+  }
+}

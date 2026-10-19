@@ -1,0 +1,45 @@
+id: example-provider
+name: Example Provider
+name_en: Example Provider
+vendor: Example Vendor
+status: draft
+
+protocols:
+  anthropic:
+    type: anthropic-messages
+    base_url: https://example.com/plan/anthropic
+    messages_endpoint: https://example.com/plan/anthropic/v1/messages
+    legacy_base_url: ""
+  openai:
+    type: openai-chat-completions
+    base_url: https://example.com/plan/v3
+    chat_endpoint: https://example.com/plan/v3/chat/completions
+    legacy_base_url: ""
+
+console:
+  dashboard: https://example.com/console
+  model_square: https://example.com/console/models
+  model_detail: "https://example.com/console/models/detail?modelId={model_id}"
+
+auth:
+  type: api-key
+  header_anthropic: x-api-key
+  header_openai: Authorization
+  scheme_openai: Bearer
+  note: Replace with the provider's actual auth requirements.
+
+resources:
+  models_file: models.json
+  model_count: 0
+  enabled_in_zcode: []
+  removed_from_zcode: []
+
+metadata:
+  pricing_unit: CNY per 1M tokens
+  context_unit: tokens
+  context_conversion: 1024-based (1k = 1024, 1M = 1048576)
+  updated_at: "YYYY-MM-DD"
+  source: Example console
+
+notes:
+  - Replace this template with real provider information.

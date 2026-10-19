@@ -1,0 +1,1866 @@
+{
+  "provider": "tencent-token-plan",
+  "providerName": "腾讯云 Token Plan",
+  "plan": {
+    "name": "Token Plan 个人版",
+    "tier": "Pro",
+    "region": "广州",
+    "supportedModelCount": 13,
+    "baseUrls": {
+      "anthropicRecommended": "https://tokenhub.tencentmaas.com/plan/anthropic",
+      "anthropicLegacy": "https://api.lkeap.cloud.tencent.com/plan/anthropic",
+      "openaiRecommended": "https://tokenhub.tencentmaas.com/plan/v3",
+      "openaiLegacy": "https://api.lkeap.cloud.tencent.com/plan/v3"
+    }
+  },
+  "scrapedAt": "2026-10-19T16:12:07.529Z",
+  "source": "Tencent Cloud TokenHub console (Token Plan 个人版 / 模型广场)",
+  "totalModelsInSquare": 122,
+  "models": [
+    {
+      "displayName": "Auto",
+      "modelName": "auto",
+      "primaryModelId": "auto",
+      "modelIds": [
+        "auto",
+        "tc-code-latest"
+      ],
+      "note": "Token Plan 路由模型（Auto），无独立模型广场详情。上下文按可路由模型的下限保守设置。",
+      "spec": {
+        "ContextLength": "200k",
+        "MaxOutputToken": "32k"
+      },
+      "normalized": {
+        "contextWindow": 204800,
+        "maxOutputTokens": 32768
+      },
+      "planDisplayName": "Auto",
+      "zcode": {
+        "contextWindow": 204800,
+        "maxOutputTokens": 32768,
+        "reasoningLevels": [
+          "disabled",
+          "enabled"
+        ],
+        "selected": false,
+        "order": null,
+        "excludedReason": "按用户要求不纳入 ZCode 模型选择器"
+      }
+    },
+    {
+      "displayName": "MiniMax-M3",
+      "modelName": "MiniMax-M3",
+      "primaryModelId": "minimax-m3",
+      "modelIds": [
+        "minimax-m3",
+        "minimax-m-3-0"
+      ],
+      "description": "MiniMax- M3作为MiniMax最新发布的模型，在编程和智能体等专业任务上达到了前沿的能力，它使用了全新注意力架构 MSA （MiniMax Sparse Attention），最高支持 1M 超长上下文，同时它也是一个原生多模态模型，支持图片和视频的输入。",
+      "summary": "在编程和智能体等专业任务上达到了前沿的能力，1M 超长上下文，原生多模态能力",
+      "brand": "MiniMax",
+      "modelSeries": "minimax-m3",
+      "modelType": "Text",
+      "tags": [
+        "文本生成",
+        "深度思考",
+        "视觉理解"
+      ],
+      "status": "online",
+      "releaseAt": "2026-06-01T00:00:00+08:00",
+      "updatedAt": "2026-10-19T23:19:38.323+08:00",
+      "spec": {
+        "TPM": "1000k",
+        "QPM": "60",
+        "MaxInputToken": "1M",
+        "MaxOutputToken": "1M",
+        "ContextLength": "1M"
+      },
+      "normalized": {
+        "contextWindow": 1048576,
+        "maxInputTokens": 1048576,
+        "maxOutputTokens": 1048576
+      },
+      "charging": [
+        {
+          "Type": "Tiered",
+          "Name": "输入<=512k",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "2.1",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "0.42",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "8.4",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "InputPrice": "2.1",
+          "OutputPrice": "8.4",
+          "CachePrice": "0.42",
+          "ChargeUnit": "TOKEN",
+          "InputOutputUnit": "百万tokens"
+        },
+        {
+          "Type": "Tiered",
+          "Name": "512k<输入",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "4.2",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "0.84",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "16.8",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "InputPrice": "4.2",
+          "OutputPrice": "16.8",
+          "CachePrice": "0.84",
+          "ChargeUnit": "TOKEN",
+          "InputOutputUnit": "百万tokens"
+        }
+      ],
+      "freeTrial": {
+        "RecommendWeight": 2,
+        "CapacitySize": 1000000,
+        "Unit": "token",
+        "ValidityDays": 90
+      },
+      "apiReference": "https://cloud.tencent.com/document/product/1823/132246",
+      "capabilities": [
+        {
+          "DisplayName": "Anthropic API",
+          "Description": "支持Anthropic API调用方式",
+          "CapabilityName": "AnthropicAPI",
+          "CapabilityValue": "curl -s -X POST 'https://tokenhub.tencentmaas.com/v1/messages' \\\n-H 'Content-Type: application/json' \\\n-H 'anthropic-version: 2023-06-01' \\\n-H \"x-api-key: YOUR_API_KEY\" \\\n-d '{\n\"model\": \"minimax-m3\",\n\"messages\": [{ \"role\": \"user\", \"content\": \"你好\" }]\n}'"
+        },
+        {
+          "DisplayName": "cache缓存",
+          "Description": "模型是否支持缓存",
+          "CapabilityName": "Cache",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Completions API",
+          "Description": "支持 OpenAI 兼容的 Chat Completions API 调用方式",
+          "CapabilityName": "CompletionsAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/chat/completions' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"minimax-m3\",\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n      {\"role\": \"user\", \"content\": \"你好\"}\n    ],\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "深度思考",
+          "Description": "模型是否支持深度思考",
+          "CapabilityName": "DeepThink",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "模型体验",
+          "Description": "模型是否支持在线体验",
+          "CapabilityName": "Experience",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "图片输入",
+          "Description": "模型是否支持图片输入",
+          "CapabilityName": "InputImage",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输入",
+          "Description": "模型是否支持文本输入",
+          "CapabilityName": "InputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "视频输入",
+          "Description": "模型是否支持视频输入",
+          "CapabilityName": "InputVideo",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输出",
+          "Description": "模型是否支持文本输出",
+          "CapabilityName": "OutputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本生成",
+          "Description": "是否支持文本生成",
+          "CapabilityName": "TextGeneration",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "可切换",
+          "Description": "模型深度思考为可切换模式",
+          "CapabilityName": "ThinkTypeSwitchable",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "视觉理解",
+          "Description": "是否支持视觉理解",
+          "CapabilityName": "VisualUnderstanding",
+          "CapabilityValue": "true"
+        }
+      ],
+      "extraModelIds": [],
+      "planDisplayName": "MiniMax-M3",
+      "zcode": {
+        "contextWindow": 1048576,
+        "maxOutputTokens": 1048576,
+        "reasoningLevels": [
+          "disabled",
+          "enabled"
+        ],
+        "selected": true,
+        "order": 5
+      }
+    },
+    {
+      "displayName": "MiniMax-M2.7",
+      "modelName": "MiniMax-M2.7",
+      "primaryModelId": "minimax-m2.7",
+      "modelIds": [
+        "minimax-m2.7",
+        "minimax-m-2-7"
+      ],
+      "description": "MiniMax 推出的自我进化大语言模型，具备卓越的软件工程能力和专业办公能力，支持复杂 Agent 交互与端到端项目交付。",
+      "summary": "自行构建复杂 Agent Harness, 完成高度复杂的任务",
+      "brand": "MiniMax",
+      "modelSeries": "minimax-m2",
+      "modelType": "Text",
+      "tags": [
+        "文本生成",
+        "深度思考"
+      ],
+      "status": "pre-offline",
+      "releaseAt": "2026-03-18T00:00:00+08:00",
+      "updatedAt": "2026-10-19T23:19:38.395+08:00",
+      "spec": {
+        "TPM": "1000k",
+        "QPM": "60",
+        "MaxInputToken": "200k",
+        "MaxOutputToken": "128k",
+        "ContextLength": "200k"
+      },
+      "normalized": {
+        "contextWindow": 204800,
+        "maxInputTokens": 204800,
+        "maxOutputTokens": 131072
+      },
+      "charging": [
+        {
+          "Type": "Uniform",
+          "Name": "",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "2.1",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "0.42",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "8.4",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "InputPrice": "2.1",
+          "OutputPrice": "8.4",
+          "CachePrice": "0.42",
+          "ChargeUnit": "TOKEN",
+          "InputOutputUnit": "百万tokens"
+        }
+      ],
+      "freeTrial": {
+        "RecommendWeight": 8,
+        "CapacitySize": 1000000,
+        "Unit": "token",
+        "ValidityDays": 90
+      },
+      "apiReference": "https://cloud.tencent.com/document/product/1823/132246",
+      "capabilities": [
+        {
+          "DisplayName": "Anthropic API",
+          "Description": "支持Anthropic API调用方式",
+          "CapabilityName": "AnthropicAPI",
+          "CapabilityValue": "curl -s -X POST 'https://tokenhub.tencentmaas.com/v1/messages' \\\n-H 'Content-Type: application/json' \\\n-H 'anthropic-version: 2023-06-01' \\\n-H \"x-api-key: YOUR_API_KEY\" \\\n-d '{\n\"model\": \"minimax-m2.7\",\n\"messages\": [{ \"role\": \"user\", \"content\": \"你好\" }]\n}'"
+        },
+        {
+          "DisplayName": "cache缓存",
+          "Description": "模型是否支持缓存",
+          "CapabilityName": "Cache",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Completions API",
+          "Description": "支持 OpenAI 兼容的 Chat Completions API 调用方式",
+          "CapabilityName": "CompletionsAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/chat/completions' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"minimax-m2.7\",\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n      {\"role\": \"user\", \"content\": \"你好\"}\n    ],\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "深度思考",
+          "Description": "模型是否支持深度思考",
+          "CapabilityName": "DeepThink",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "模型体验",
+          "Description": "模型是否支持在线体验",
+          "CapabilityName": "Experience",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Function Calling",
+          "Description": "模型是否支持函数调用",
+          "CapabilityName": "FunctionCall",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输入",
+          "Description": "模型是否支持文本输入",
+          "CapabilityName": "InputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输出",
+          "Description": "模型是否支持文本输出",
+          "CapabilityName": "OutputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本生成",
+          "Description": "是否支持文本生成",
+          "CapabilityName": "TextGeneration",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "不可切换",
+          "Description": "模型深度思考为不可切换模式",
+          "CapabilityName": "ThinkTypeNonSwitchable",
+          "CapabilityValue": "true"
+        }
+      ],
+      "extraModelIds": [],
+      "planDisplayName": "MiniMax-M2.7",
+      "zcode": {
+        "contextWindow": 204800,
+        "maxOutputTokens": 131072,
+        "reasoningLevels": [
+          "enabled"
+        ],
+        "selected": false,
+        "order": null,
+        "excludedReason": "按用户要求不纳入 ZCode 模型选择器"
+      }
+    },
+    {
+      "displayName": "GLM-5.2",
+      "modelName": "GLM-5.2",
+      "primaryModelId": "glm-5.2",
+      "modelIds": [
+        "glm-5.2",
+        "glm-5-2"
+      ],
+      "description": "GLM-5.2 是智谱最新旗舰模型，支持1M上下文及思考长度控制，在coding及agent场景表现优异",
+      "summary": "智谱最新旗舰模型，1M上下文，支持思考长度控制",
+      "brand": "智谱 AI",
+      "modelSeries": "glm",
+      "modelType": "Text",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "status": "online",
+      "releaseAt": "2026-06-16T08:00:00+08:00",
+      "updatedAt": "2026-10-13T12:06:35.232+08:00",
+      "spec": {
+        "TPM": "1000000",
+        "QPM": "60",
+        "MaxInputToken": "1024k",
+        "MaxOutputToken": "128k",
+        "ContextLength": "1M"
+      },
+      "normalized": {
+        "contextWindow": 1048576,
+        "maxInputTokens": 1048576,
+        "maxOutputTokens": 131072
+      },
+      "charging": [
+        {
+          "Type": "Uniform",
+          "Name": "",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "8",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "28",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "2",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "ChargeUnit": "TOKEN"
+        }
+      ],
+      "freeTrial": {
+        "CapacitySize": 1000000,
+        "Unit": "token",
+        "ValidityDays": 90
+      },
+      "apiReference": "https://cloud.tencent.com/document/product/1823/132061",
+      "capabilities": [
+        {
+          "DisplayName": "Anthropic API",
+          "Description": "支持Anthropic API调用方式",
+          "CapabilityName": "AnthropicAPI",
+          "CapabilityValue": "curl -s -X POST 'https://tokenhub.tencentmaas.com/v1/messages' \\\n-H 'Content-Type: application/json' \\\n-H 'anthropic-version: 2023-06-01' \\\n-H \"x-api-key: YOUR_API_KEY\" \\\n-d '{\n\"model\": \"glm-5.2\",\n\"messages\": [{ \"role\": \"user\", \"content\": \"你好\" }]\n}'"
+        },
+        {
+          "DisplayName": "cache缓存",
+          "Description": "模型是否支持缓存",
+          "CapabilityName": "Cache",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Completions API",
+          "Description": "支持 OpenAI 兼容的 Chat Completions API 调用方式",
+          "CapabilityName": "CompletionsAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/chat/completions' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"glm-5.2\",\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n      {\"role\": \"user\", \"content\": \"你好\"}\n    ],\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "深度思考",
+          "Description": "模型是否支持深度思考",
+          "CapabilityName": "DeepThink",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Function Calling",
+          "Description": "模型是否支持函数调用",
+          "CapabilityName": "FunctionCall",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输入",
+          "Description": "模型是否支持文本输入",
+          "CapabilityName": "InputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输出",
+          "Description": "模型是否支持文本输出",
+          "CapabilityName": "OutputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "结构化输出",
+          "Description": "模型是否支持结构化输出",
+          "CapabilityName": "StructOutput",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本生成",
+          "Description": "是否支持文本生成",
+          "CapabilityName": "TextGeneration",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "可切换",
+          "Description": "模型深度思考为可切换模式",
+          "CapabilityName": "ThinkTypeSwitchable",
+          "CapabilityValue": "true"
+        }
+      ],
+      "extraModelIds": [],
+      "planDisplayName": "GLM-5.2",
+      "zcode": {
+        "contextWindow": 1048576,
+        "maxOutputTokens": 131072,
+        "reasoningLevels": [
+          "high",
+          "max"
+        ],
+        "selected": false,
+        "order": null,
+        "excludedReason": "旧版本，按用户要求不纳入 ZCode 模型选择器"
+      }
+    },
+    {
+      "displayName": "GLM-5.3",
+      "modelName": "GLM-5.3",
+      "primaryModelId": "glm-5.3",
+      "modelIds": [
+        "glm-5.3",
+        "glm-5-3"
+      ],
+      "description": "智谱最新旗舰模型，1M上下文，支持思考长度控制",
+      "summary": "GLM-5.3 是智谱最新旗舰模型，擅长coding和agent任务",
+      "brand": "智谱 AI",
+      "modelSeries": "GLM系列",
+      "modelType": "Text",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "status": "online",
+      "releaseAt": "2026-08-14T08:00:00+08:00",
+      "updatedAt": "2026-10-13T12:13:58.51+08:00",
+      "spec": {
+        "TPM": "1000000",
+        "QPM": "60",
+        "MaxInputToken": "1024k",
+        "MaxOutputToken": "128k",
+        "ContextLength": "1024k"
+      },
+      "normalized": {
+        "contextWindow": 1048576,
+        "maxInputTokens": 1048576,
+        "maxOutputTokens": 131072
+      },
+      "charging": [
+        {
+          "Type": "Uniform",
+          "Name": "",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "8",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "28",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "2",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "ChargeUnit": "TOKEN"
+        }
+      ],
+      "freeTrial": {
+        "CapacitySize": 1000000,
+        "Unit": "token",
+        "ValidityDays": 365
+      },
+      "apiReference": "https://cloud.tencent.com/document/product/1823/132061",
+      "capabilities": [
+        {
+          "DisplayName": "Anthropic API",
+          "Description": "支持Anthropic API调用方式",
+          "CapabilityName": "AnthropicAPI",
+          "CapabilityValue": "curl -s -X POST 'https://tokenhub.tencentmaas.com/v1/messages' \\\n-H 'Content-Type: application/json' \\\n-H 'anthropic-version: 2023-06-01' \\\n-H \"x-api-key: YOUR_API_KEY\" \\\n-d '{\n\"model\": \"glm-5.3\",\n\"messages\": [{ \"role\": \"user\", \"content\": \"你好\" }]\n}'"
+        },
+        {
+          "DisplayName": "cache缓存",
+          "Description": "模型是否支持缓存",
+          "CapabilityName": "Cache",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Completions API",
+          "Description": "支持 OpenAI 兼容的 Chat Completions API 调用方式",
+          "CapabilityName": "CompletionsAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/chat/completions' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"glm-5.3\",\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n      {\"role\": \"user\", \"content\": \"你好\"}\n    ],\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "深度思考",
+          "Description": "模型是否支持深度思考",
+          "CapabilityName": "DeepThink",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Function Calling",
+          "Description": "模型是否支持函数调用",
+          "CapabilityName": "FunctionCall",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输入",
+          "Description": "模型是否支持文本输入",
+          "CapabilityName": "InputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输出",
+          "Description": "模型是否支持文本输出",
+          "CapabilityName": "OutputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Response API",
+          "Description": "支持Response API调用方式",
+          "CapabilityName": "ResponsesAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/responses' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"glm-5.3\",\n    \"instructions\": \"You are a helpful assistant.\",\n    \"input\": \"你好\",\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "结构化输出",
+          "Description": "模型是否支持结构化输出",
+          "CapabilityName": "StructOutput",
+          "CapabilityValue": "true"
+        }
+      ],
+      "extraModelIds": [],
+      "planDisplayName": "GLM-5.3",
+      "zcode": {
+        "contextWindow": 1048576,
+        "maxOutputTokens": 131072,
+        "reasoningLevels": [
+          "low",
+          "high",
+          "max"
+        ],
+        "selected": true,
+        "order": 6
+      }
+    },
+    {
+      "displayName": "GLM-5.3-Flash",
+      "modelName": "GLM-5.3-Flash",
+      "primaryModelId": "glm-5.3-flash",
+      "modelIds": [
+        "glm-5.3-flash"
+      ],
+      "description": "GLM-5.3-Flash 是智谱最新的原生多模态模型，擅长coding和agent任务",
+      "brand": "智谱 AI",
+      "modelType": "Text",
+      "tags": [
+        "文本生成",
+        "视觉理解",
+        "深度思考"
+      ],
+      "status": "online",
+      "releaseAt": "2026-08-26T08:00:00+08:00",
+      "updatedAt": "2026-10-13T12:13:58.509+08:00",
+      "spec": {
+        "TPM": "1000000",
+        "QPM": "60",
+        "MaxInputToken": "1024k",
+        "MaxOutputToken": "128k",
+        "ContextLength": "1024K",
+        "Concurrency": "10"
+      },
+      "normalized": {
+        "contextWindow": 1048576,
+        "maxInputTokens": 1048576,
+        "maxOutputTokens": 131072
+      },
+      "charging": [
+        {
+          "Type": "Uniform",
+          "Name": "",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "0.8",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "2.8",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "0.23",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "ChargeUnit": "TOKEN"
+        }
+      ],
+      "freeTrial": {
+        "CapacitySize": 1000000,
+        "Unit": "token",
+        "ValidityDays": 365
+      },
+      "apiReference": "https://cloud.tencent.com/document/product/1823/132061",
+      "capabilities": [
+        {
+          "DisplayName": "Anthropic API",
+          "Description": "支持Anthropic API调用方式",
+          "CapabilityName": "AnthropicAPI",
+          "CapabilityValue": "curl -s -X POST 'https://tokenhub.tencentmaas.com/v1/messages' \\\n-H 'Content-Type: application/json' \\\n-H 'anthropic-version: 2023-06-01' \\\n-H \"x-api-key: YOUR_API_KEY\" \\\n-d '{\n\"model\": \"glm-5.3-flash\",\n\"messages\": [{ \"role\": \"user\", \"content\": \"你好\" }]\n}'"
+        },
+        {
+          "DisplayName": "cache缓存",
+          "Description": "模型是否支持缓存",
+          "CapabilityName": "Cache",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Completions API",
+          "Description": "支持 OpenAI 兼容的 Chat Completions API 调用方式",
+          "CapabilityName": "CompletionsAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/chat/completions' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"glm-5.3-flash\",\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n      {\"role\": \"user\", \"content\": \"你好\"}\n    ],\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "深度思考",
+          "Description": "模型是否支持深度思考",
+          "CapabilityName": "DeepThink",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Function Calling",
+          "Description": "模型是否支持函数调用",
+          "CapabilityName": "FunctionCall",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文件输入",
+          "Description": "模型是否支持文件输入",
+          "CapabilityName": "InputFile",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "图片输入",
+          "Description": "模型是否支持图片输入",
+          "CapabilityName": "InputImage",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输入",
+          "Description": "模型是否支持文本输入",
+          "CapabilityName": "InputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "视频输入",
+          "Description": "模型是否支持视频输入",
+          "CapabilityName": "InputVideo",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输出",
+          "Description": "模型是否支持文本输出",
+          "CapabilityName": "OutputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Response API",
+          "Description": "支持Response API调用方式",
+          "CapabilityName": "ResponsesAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/responses' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"glm-5.3-flash\",\n    \"instructions\": \"You are a helpful assistant.\",\n    \"input\": \"你好\",\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "结构化输出",
+          "Description": "模型是否支持结构化输出",
+          "CapabilityName": "StructOutput",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "可切换",
+          "Description": "模型深度思考为可切换模式",
+          "CapabilityName": "ThinkTypeSwitchable",
+          "CapabilityValue": "true"
+        }
+      ],
+      "extraModelIds": [],
+      "planDisplayName": "GLM-5.3-Flash",
+      "zcode": {
+        "contextWindow": 1048576,
+        "maxOutputTokens": 131072,
+        "reasoningLevels": [
+          "low",
+          "high",
+          "max"
+        ],
+        "selected": true,
+        "order": 2
+      }
+    },
+    {
+      "displayName": "Kimi K2.7 Code",
+      "modelName": "Kimi K2.7 Code",
+      "primaryModelId": "kimi-k2.7-code",
+      "modelIds": [
+        "kimi-k2.7-code"
+      ],
+      "description": "Kimi 迄今最智能的 Coding 模型，在长上下文中更可靠地遵循指令，能以更高的成功率完成编程任务，同时支持文本、图片与视频输入，思考模式，对话与 Agent 任务。",
+      "summary": "Kimi 迄今最智能的 Coding 模型",
+      "brand": "月之暗面",
+      "modelSeries": "kimi-k2",
+      "modelType": "Text",
+      "tags": [
+        "文本生成",
+        "深度思考",
+        "视觉理解"
+      ],
+      "status": "online",
+      "releaseAt": "2026-06-12T00:00:00+08:00",
+      "updatedAt": "2026-10-19T23:19:38.335+08:00",
+      "spec": {
+        "TPM": "1000k",
+        "QPM": "60",
+        "MaxInputToken": "256k",
+        "MaxOutputToken": "256k",
+        "ContextLength": "256k",
+        "InputDescription": "图片：PNG、JPEG、WebP、GIF 等（通过 URL、Base64 或本地文件上传）视频：MP4 等（通过 video_url，或图片帧序列 + fps 参数）图片建议不超过 4K 分辨率，视频建议不超过 1080p。"
+      },
+      "normalized": {
+        "contextWindow": 262144,
+        "maxInputTokens": 262144,
+        "maxOutputTokens": 262144
+      },
+      "charging": [
+        {
+          "Type": "Uniform",
+          "Name": "",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "6.5",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "1.3",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "27",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "ChargeUnit": "TOKEN"
+        }
+      ],
+      "freeTrial": {
+        "CapacitySize": 1000000,
+        "Unit": "token",
+        "ValidityDays": 90
+      },
+      "apiReference": "https://cloud.tencent.com/document/product/1823/132232",
+      "capabilities": [
+        {
+          "DisplayName": "cache缓存",
+          "Description": "模型是否支持缓存",
+          "CapabilityName": "Cache",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Completions API",
+          "Description": "支持 OpenAI 兼容的 Chat Completions API 调用方式",
+          "CapabilityName": "CompletionsAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/chat/completions' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"kimi-k2.7-code\",\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n      {\"role\": \"user\", \"content\": \"你好\"}\n    ],\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "深度思考",
+          "Description": "模型是否支持深度思考",
+          "CapabilityName": "DeepThink",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "模型体验",
+          "Description": "模型是否支持在线体验",
+          "CapabilityName": "Experience",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Function Calling",
+          "Description": "模型是否支持函数调用",
+          "CapabilityName": "FunctionCall",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "图片输入",
+          "Description": "模型是否支持图片输入",
+          "CapabilityName": "InputImage",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输入",
+          "Description": "模型是否支持文本输入",
+          "CapabilityName": "InputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "视频输入",
+          "Description": "模型是否支持视频输入",
+          "CapabilityName": "InputVideo",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输出",
+          "Description": "模型是否支持文本输出",
+          "CapabilityName": "OutputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "结构化输出",
+          "Description": "模型是否支持结构化输出",
+          "CapabilityName": "StructOutput",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本生成",
+          "Description": "是否支持文本生成",
+          "CapabilityName": "TextGeneration",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "可切换",
+          "Description": "模型深度思考为可切换模式",
+          "CapabilityName": "ThinkTypeSwitchable",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "视觉理解",
+          "Description": "是否支持视觉理解",
+          "CapabilityName": "VisualUnderstanding",
+          "CapabilityValue": "true"
+        }
+      ],
+      "extraModelIds": [],
+      "planDisplayName": "Kimi K2.7 Code",
+      "zcode": {
+        "contextWindow": 262144,
+        "maxOutputTokens": 262144,
+        "reasoningLevels": [
+          "enabled"
+        ],
+        "selected": false,
+        "order": null,
+        "excludedReason": "按用户要求不纳入 ZCode 模型选择器"
+      }
+    },
+    {
+      "displayName": "Kimi K3",
+      "modelName": "Kimi K3",
+      "primaryModelId": "kimi-k3",
+      "modelIds": [
+        "kimi-k3"
+      ],
+      "description": "Kimi K3，月之暗面迄今能力最强的SOTA模型。K3 是一个 2.8 万亿参数模型，基于 KDA 混合线性注意力机制（Kimi Delta Attention）和注意力残差（Attention Residuals）技术构建，原生支持视觉理解，并拥有 100 万 token 上下文窗口。Kimi K3 是首个开源的 3 万亿级别模型，面向软件工程、知识工作和深度推理等前沿智能场景而设计",
+      "summary": "Kimi K3，月之暗面迄今能力最强的SOTA模型。首个开源的 3 万亿级别模型，面向软件工程、知识工作和深度推理等前沿智能场景而设计",
+      "brand": "月之暗面",
+      "modelSeries": "kimi-k3",
+      "modelType": "Text",
+      "tags": [
+        "深度思考",
+        "文本生成",
+        "视觉理解"
+      ],
+      "status": "online",
+      "releaseAt": "2026-07-16T00:00:00+08:00",
+      "updatedAt": "2026-10-13T12:06:35.23+08:00",
+      "spec": {
+        "TPM": "1000k",
+        "QPM": "60",
+        "MaxInputToken": "1M",
+        "MaxOutputToken": "1M",
+        "ContextLength": "1M",
+        "InputDescription": "图片：PNG、JPEG、WebP、GIF 等（通过 URL、Base64 或本地文件上传）视频：MP4 等（通过 video_url，或图片帧序列 + fps 参数）图片建议不超过 4K 分辨率，视频建议不超过 1080p。"
+      },
+      "normalized": {
+        "contextWindow": 1048576,
+        "maxInputTokens": 1048576,
+        "maxOutputTokens": 1048576
+      },
+      "charging": [
+        {
+          "Type": "Uniform",
+          "Name": "",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "20",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "2",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "100",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "ChargeUnit": "TOKEN",
+          "InputOutputUnit": "百万tokens"
+        }
+      ],
+      "freeTrial": {
+        "RecommendWeight": 2,
+        "CapacitySize": 1000000,
+        "Unit": "token",
+        "ValidityDays": 90
+      },
+      "apiReference": "https://cloud.tencent.com/document/product/1823/132232",
+      "capabilities": [
+        {
+          "DisplayName": "Anthropic API",
+          "Description": "支持Anthropic API调用方式",
+          "CapabilityName": "AnthropicAPI",
+          "CapabilityValue": "curl -s -X POST 'https://tokenhub.tencentmaas.com/v1/messages' \\\n-H 'Content-Type: application/json' \\\n-H 'anthropic-version: 2023-06-01' \\\n-H \"x-api-key: YOUR_API_KEY\" \\\n-d '{\n\"model\": \"kimi-k3\",\n\"messages\": [{ \"role\": \"user\", \"content\": \"你好\" }]\n}'"
+        },
+        {
+          "DisplayName": "cache缓存",
+          "Description": "模型是否支持缓存",
+          "CapabilityName": "Cache",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Completions API",
+          "Description": "支持 OpenAI 兼容的 Chat Completions API 调用方式",
+          "CapabilityName": "CompletionsAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/chat/completions' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"kimi-k3\",\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n      {\"role\": \"user\", \"content\": \"你好\"}\n    ],\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "深度思考",
+          "Description": "模型是否支持深度思考",
+          "CapabilityName": "DeepThink",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "图片输入",
+          "Description": "模型是否支持图片输入",
+          "CapabilityName": "InputImage",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输入",
+          "Description": "模型是否支持文本输入",
+          "CapabilityName": "InputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "视频输入",
+          "Description": "模型是否支持视频输入",
+          "CapabilityName": "InputVideo",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输出",
+          "Description": "模型是否支持文本输出",
+          "CapabilityName": "OutputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "结构化输出",
+          "Description": "模型是否支持结构化输出",
+          "CapabilityName": "StructOutput",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本生成",
+          "Description": "是否支持文本生成",
+          "CapabilityName": "TextGeneration",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "可切换",
+          "Description": "模型深度思考为可切换模式",
+          "CapabilityName": "ThinkTypeSwitchable",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "视觉理解",
+          "Description": "是否支持视觉理解",
+          "CapabilityName": "VisualUnderstanding",
+          "CapabilityValue": "true"
+        }
+      ],
+      "extraModelIds": [],
+      "planDisplayName": "Kimi K3",
+      "zcode": {
+        "contextWindow": 1048576,
+        "maxOutputTokens": 1048576,
+        "reasoningLevels": [
+          "max"
+        ],
+        "selected": true,
+        "order": 7
+      }
+    },
+    {
+      "displayName": "DeepSeek-V4-Flash 0731 正式版",
+      "modelName": "DeepSeek-V4-Flash 0731 正式版",
+      "primaryModelId": "deepseek-v4-flash-202605",
+      "modelIds": [
+        "deepseek-v4-flash-202605",
+        "deepseek/deepseek-v4-flash",
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "description": "DeepSeek-V4-Flash 0731 正式版（原厂直供）现已更新至 DeepSeek-V4.1-Flash-1017 版本，该模型项目开发能力与网络安全能力提升显著，更低成本、更快速度完成任务。TokenHub 不对该服务提供 SLA 保障。使用该模型即视为您已知晓并同意遵守 DeepSeek 的服务协议，请您在使用前务必仔细阅读相关内容（https://cdn.deepseek.com/policies/zh-CN/deepseek-terms-of-use.html），如不接受上述内容，请立即停止使用。",
+      "summary": "DeepSeek-V4-Flash 0731 正式版（原厂直供）现已更新至 DeepSeek-V4.1-Flash-1017 版本。",
+      "brand": "DeepSeek",
+      "modelSeries": "deepseek-v4",
+      "modelType": "Text",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "status": "online",
+      "releaseAt": "2026-07-31T08:00:00+08:00",
+      "updatedAt": "2026-10-19T23:19:38.327+08:00",
+      "spec": {
+        "TPM": "1000000",
+        "QPM": "60",
+        "MaxInputToken": "1024k",
+        "MaxOutputToken": "384k",
+        "ContextLength": "1024k"
+      },
+      "normalized": {
+        "contextWindow": 1048576,
+        "maxInputTokens": 1048576,
+        "maxOutputTokens": 393216
+      },
+      "charging": [
+        {
+          "Type": "Uniform",
+          "Name": "",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "1",
+              "PeakPrice": "2",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "4",
+              "PeakPrice": "8",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "0.02",
+              "PeakPrice": "0.04",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "ChargeUnit": "TOKEN"
+        }
+      ],
+      "freeTrial": {
+        "CapacitySize": 1000000,
+        "Unit": "token",
+        "ValidityDays": 90
+      },
+      "apiReference": "https://cloud.tencent.com/document/product/1823/132248",
+      "capabilities": [
+        {
+          "DisplayName": "Anthropic API",
+          "Description": "支持Anthropic API调用方式",
+          "CapabilityName": "AnthropicAPI",
+          "CapabilityValue": "curl -s -X POST 'https://tokenhub.tencentmaas.com/v1/messages' \\\n-H 'Content-Type: application/json' \\\n-H 'anthropic-version: 2023-06-01' \\\n-H \"x-api-key: YOUR_API_KEY\" \\\n-d '{\n\"model\": \"deepseek-v4-flash-202605\",\n\"messages\": [{ \"role\": \"user\", \"content\": \"你好\" }]\n}'"
+        },
+        {
+          "DisplayName": "cache缓存",
+          "Description": "模型是否支持缓存",
+          "CapabilityName": "Cache",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Completions API",
+          "Description": "支持 OpenAI 兼容的 Chat Completions API 调用方式",
+          "CapabilityName": "CompletionsAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/chat/completions' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"deepseek-v4-flash-202605\",\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n      {\"role\": \"user\", \"content\": \"你好\"}\n    ],\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "深度思考",
+          "Description": "模型是否支持深度思考",
+          "CapabilityName": "DeepThink",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Function Calling",
+          "Description": "模型是否支持函数调用",
+          "CapabilityName": "FunctionCall",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输入",
+          "Description": "模型是否支持文本输入",
+          "CapabilityName": "InputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输出",
+          "Description": "模型是否支持文本输出",
+          "CapabilityName": "OutputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Response API",
+          "Description": "支持Response API调用方式",
+          "CapabilityName": "ResponsesAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/responses' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"deepseek-v4-flash-202605\",\n    \"instructions\": \"You are a helpful assistant.\",\n    \"input\": \"你好\",\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "结构化输出",
+          "Description": "模型是否支持结构化输出",
+          "CapabilityName": "StructOutput",
+          "CapabilityValue": "true"
+        }
+      ],
+      "extraModelIds": [
+        "deepseek/deepseek-v4-flash-0731",
+        "deepseek/deepseek-v4-flash"
+      ],
+      "planDisplayName": "DeepSeek-V4 Flash 正式版",
+      "zcode": {
+        "contextWindow": 1048576,
+        "maxOutputTokens": 393216,
+        "reasoningLevels": [
+          "low",
+          "high",
+          "max"
+        ],
+        "selected": false,
+        "order": null,
+        "excludedReason": "旧版本，按用户要求不纳入 ZCode 模型选择器"
+      }
+    },
+    {
+      "displayName": "DeepSeek-V4.1-Flash-1017",
+      "modelName": "DeepSeek-V4.1-Flash-1017",
+      "primaryModelId": "deepseek/deepseek-flash",
+      "modelIds": [
+        "deepseek/deepseek-flash"
+      ],
+      "description": "由 DeepSeek 直接提供 DeepSeek-V4.1-Flash 现已更新至的 DeepSeek-V4.1-Flash-1017 版本，该模型项目开发能力与网络安全能力提升显著，更低成本、更快速度完成任务。TokenHub 不对该服务提供 SLA 保障，使用该模型即视为您已知晓并同意遵守 DeepSeek 的服务协议，请您在使用前务必仔细阅读相关内容（https://cdn.deepseek.com/policies/zh-CN/deepseek-terms-of-use.html），如不接受上述内容，请立即停止使用。",
+      "summary": "DeepSeek-V4.1-Flash-1017 模型项目开发能力与网络安全能力提升显著，更低成本、更快速度完成任务。",
+      "brand": "DeepSeek",
+      "modelType": "Text",
+      "tags": [
+        "文本生成",
+        "视觉理解",
+        "深度思考"
+      ],
+      "status": "online",
+      "releaseAt": "2026-09-10T08:00:00+08:00",
+      "updatedAt": "2026-10-17T23:37:49.832+08:00",
+      "spec": {
+        "TPM": "1000000",
+        "QPM": "60",
+        "MaxInputToken": "1024k",
+        "MaxOutputToken": "384k",
+        "ContextLength": "1024K"
+      },
+      "normalized": {
+        "contextWindow": 1048576,
+        "maxInputTokens": 1048576,
+        "maxOutputTokens": 393216
+      },
+      "charging": [
+        {
+          "Type": "Uniform",
+          "Name": "",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "1",
+              "PeakPrice": "2",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "4",
+              "PeakPrice": "8",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "0.02",
+              "PeakPrice": "0.04",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "ChargeUnit": "TOKEN"
+        }
+      ],
+      "freeTrial": {
+        "CapacitySize": 100,
+        "Unit": "token",
+        "ValidityDays": 90
+      },
+      "apiReference": "https://cloud.tencent.com/document/product/1823/132248",
+      "capabilities": [
+        {
+          "DisplayName": "Anthropic API",
+          "Description": "支持Anthropic API调用方式",
+          "CapabilityName": "AnthropicAPI",
+          "CapabilityValue": "curl -s -X POST 'https://tokenhub.tencentmaas.com/v1/messages' \\\n-H 'Content-Type: application/json' \\\n-H 'anthropic-version: 2023-06-01' \\\n-H \"x-api-key: YOUR_API_KEY\" \\\n-d '{\n\"model\": \"deepseek/deepseek-flash\",\n\"messages\": [{ \"role\": \"user\", \"content\": \"你好\" }]\n}'"
+        },
+        {
+          "DisplayName": "cache缓存",
+          "Description": "模型是否支持缓存",
+          "CapabilityName": "Cache",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Completions API",
+          "Description": "支持 OpenAI 兼容的 Chat Completions API 调用方式",
+          "CapabilityName": "CompletionsAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/chat/completions' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"deepseek/deepseek-flash\",\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n      {\"role\": \"user\", \"content\": \"你好\"}\n    ],\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "深度思考",
+          "Description": "模型是否支持深度思考",
+          "CapabilityName": "DeepThink",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Function Calling",
+          "Description": "模型是否支持函数调用",
+          "CapabilityName": "FunctionCall",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "图片输入",
+          "Description": "模型是否支持图片输入",
+          "CapabilityName": "InputImage",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输入",
+          "Description": "模型是否支持文本输入",
+          "CapabilityName": "InputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输出",
+          "Description": "模型是否支持文本输出",
+          "CapabilityName": "OutputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Response API",
+          "Description": "支持Response API调用方式",
+          "CapabilityName": "ResponsesAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/responses' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"deepseek/deepseek-flash\",\n    \"instructions\": \"You are a helpful assistant.\",\n    \"input\": \"你好\",\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "结构化输出",
+          "Description": "模型是否支持结构化输出",
+          "CapabilityName": "StructOutput",
+          "CapabilityValue": "true"
+        }
+      ],
+      "extraModelIds": [],
+      "planDisplayName": "DeepSeek-V4.1-Flash",
+      "zcode": {
+        "contextWindow": 1048576,
+        "maxOutputTokens": 393216,
+        "reasoningLevels": [
+          "low",
+          "high",
+          "max"
+        ],
+        "selected": true,
+        "order": 1
+      }
+    },
+    {
+      "displayName": "DeepSeek-V4-Pro 0813 正式版",
+      "modelName": "DeepSeek-V4-Pro 0813 正式版",
+      "primaryModelId": "deepseek-v4-pro-202606",
+      "modelIds": [
+        "deepseek-v4-pro-202606",
+        "deepseek/deepseek-v4-pro",
+        "deepseek/deepseek-v4-pro-0813"
+      ],
+      "description": "由 DeepSeek 直接提供的 DeepSeek-V4-Pro 0813 正式版模型服务，TokenHub 不对该服务提供 SLA 保障。使用该模型即视为您已知晓并同意遵守 DeepSeek 的服务协议，请您在使用前务必仔细阅读相关内容（https://cdn.deepseek.com/policies/zh-CN/deepseek-terms-of-use.html），如不接受上述内容，请立即停止使用。版本说明：DeepSeek-V4-Pro 正式版对应深度求索 DeepSeek-V4-Pro-0813 正式版，API调用方式不变，model调用参数设置为 deepseek-v4-pro-202606 即可使用最新版本。原本使用 DeepSeek-V4-Pro（model:deepseek-v4-flash-202606）的用户，平台将自动完成静默升级，无需任何操作即可体验最新能力。",
+      "summary": "万亿参数原生多模态旗舰，定义复杂推理与深度智能体协作新标准",
+      "brand": "DeepSeek",
+      "modelSeries": "deepseek-v4",
+      "modelType": "Text",
+      "tags": [
+        "深度思考",
+        "文本生成"
+      ],
+      "status": "online",
+      "releaseAt": "2026-08-13T08:00:00+08:00",
+      "updatedAt": "2026-10-19T23:19:38.325+08:00",
+      "spec": {
+        "TPM": "1000000",
+        "QPM": "60",
+        "MaxInputToken": "1024k",
+        "MaxOutputToken": "384k",
+        "ContextLength": "1024k"
+      },
+      "normalized": {
+        "contextWindow": 1048576,
+        "maxInputTokens": 1048576,
+        "maxOutputTokens": 393216
+      },
+      "charging": [
+        {
+          "Type": "Uniform",
+          "Name": "",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "4.5",
+              "PeakPrice": "9",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "13.5",
+              "PeakPrice": "27",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "0.15",
+              "PeakPrice": "0.3",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "ChargeUnit": "TOKEN"
+        }
+      ],
+      "freeTrial": {
+        "CapacitySize": 1000000,
+        "Unit": "token",
+        "ValidityDays": 90
+      },
+      "apiReference": "https://cloud.tencent.com/document/product/1823/132248",
+      "capabilities": [
+        {
+          "DisplayName": "Anthropic API",
+          "Description": "支持Anthropic API调用方式",
+          "CapabilityName": "AnthropicAPI",
+          "CapabilityValue": "curl -s -X POST 'https://tokenhub.tencentmaas.com/v1/messages' \\\n-H 'Content-Type: application/json' \\\n-H 'anthropic-version: 2023-06-01' \\\n-H \"x-api-key: YOUR_API_KEY\" \\\n-d '{\n\"model\": \"deepseek-v4-pro-202606\",\n\"messages\": [{ \"role\": \"user\", \"content\": \"你好\" }]\n}'"
+        },
+        {
+          "DisplayName": "cache缓存",
+          "Description": "模型是否支持缓存",
+          "CapabilityName": "Cache",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Completions API",
+          "Description": "支持 OpenAI 兼容的 Chat Completions API 调用方式",
+          "CapabilityName": "CompletionsAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/chat/completions' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"deepseek-v4-pro-202606\",\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n      {\"role\": \"user\", \"content\": \"你好\"}\n    ],\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "深度思考",
+          "Description": "模型是否支持深度思考",
+          "CapabilityName": "DeepThink",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Function Calling",
+          "Description": "模型是否支持函数调用",
+          "CapabilityName": "FunctionCall",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输入",
+          "Description": "模型是否支持文本输入",
+          "CapabilityName": "InputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输出",
+          "Description": "模型是否支持文本输出",
+          "CapabilityName": "OutputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Response API",
+          "Description": "支持Response API调用方式",
+          "CapabilityName": "ResponsesAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/responses' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"deepseek-v4-pro-202606\",\n    \"instructions\": \"You are a helpful assistant.\",\n    \"input\": \"你好\",\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "结构化输出",
+          "Description": "模型是否支持结构化输出",
+          "CapabilityName": "StructOutput",
+          "CapabilityValue": "true"
+        }
+      ],
+      "extraModelIds": [
+        "deepseek/deepseek-v4-pro-0813",
+        "deepseek/deepseek-v4-pro"
+      ],
+      "planDisplayName": "DeepSeek-V4-Pro 正式版",
+      "zcode": {
+        "contextWindow": 1048576,
+        "maxOutputTokens": 393216,
+        "reasoningLevels": [
+          "high",
+          "max"
+        ],
+        "selected": false,
+        "order": null,
+        "excludedReason": "旧版本，按用户要求不纳入 ZCode 模型选择器"
+      }
+    },
+    {
+      "displayName": "Hy4 preview",
+      "modelName": "Hy4 preview",
+      "primaryModelId": "hy4-preview",
+      "modelIds": [
+        "hy4-preview"
+      ],
+      "description": "混元Hy4 preview总参数770B、激活参数49B，重点面向Agent、Coding与生产力场景优化，强化复杂任务中的理解、规划、工具调用与持续执行能力。相比上一代模型，Hy4 preview在多步骤Agent、代码开发和生产力任务上进一步提升，具备更好的任务拆解、上下文承接、指令遵循和长链路执行能力。在Coding场景中，进一步增强代码理解、生成、修改和复杂工程任务处理能力；在生产力场景中，重点提升文档处理、信息分析、办公自动化、游戏开发、网页生成及跨工具协作等能力。Hy4 preview适用于Coding Agent、复杂工具调用以及各类需要多步骤规划和持续执行的Agent工作流，为真实业务场景中的复杂任务提供更可靠的任务完成能力。",
+      "summary": "新一代生产力模型，Agent与复杂任务执行能力全面升级",
+      "brand": "混元",
+      "modelSeries": "混元系列",
+      "modelType": "Text",
+      "tags": [
+        "文本生成",
+        "深度思考"
+      ],
+      "status": "online",
+      "releaseAt": "2026-08-28T08:00:00+08:00",
+      "updatedAt": "2026-10-13T12:13:58.502+08:00",
+      "spec": {
+        "TPM": "1000000",
+        "QPM": "60",
+        "MaxInputToken": "960k",
+        "MaxOutputToken": "64k",
+        "ContextLength": "1024k"
+      },
+      "normalized": {
+        "contextWindow": 1048576,
+        "maxInputTokens": 983040,
+        "maxOutputTokens": 65536
+      },
+      "charging": [
+        {
+          "Type": "Uniform",
+          "Name": "",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "6",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "18",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "0.3",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "ChargeUnit": "TOKEN"
+        }
+      ],
+      "freeTrial": {
+        "CapacitySize": 1000000,
+        "Unit": "token",
+        "ValidityDays": 365
+      },
+      "apiReference": null,
+      "capabilities": [
+        {
+          "DisplayName": "Anthropic API",
+          "Description": "支持Anthropic API调用方式",
+          "CapabilityName": "AnthropicAPI",
+          "CapabilityValue": "curl -s -X POST 'https://tokenhub.tencentmaas.com/v1/messages' \\\n-H 'Content-Type: application/json' \\\n-H 'anthropic-version: 2023-06-01' \\\n-H \"x-api-key: YOUR_API_KEY\" \\\n-d '{\n\"model\": \"hy4-preview\",\n\"messages\": [{ \"role\": \"user\", \"content\": \"你好\" }]\n}'"
+        },
+        {
+          "DisplayName": "cache缓存",
+          "Description": "模型是否支持缓存",
+          "CapabilityName": "Cache",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Completions API",
+          "Description": "支持 OpenAI 兼容的 Chat Completions API 调用方式",
+          "CapabilityName": "CompletionsAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/chat/completions' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"hy4-preview\",\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n      {\"role\": \"user\", \"content\": \"你好\"}\n    ],\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "深度思考",
+          "Description": "模型是否支持深度思考",
+          "CapabilityName": "DeepThink",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Function Calling",
+          "Description": "模型是否支持函数调用",
+          "CapabilityName": "FunctionCall",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输入",
+          "Description": "模型是否支持文本输入",
+          "CapabilityName": "InputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输出",
+          "Description": "模型是否支持文本输出",
+          "CapabilityName": "OutputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Response API",
+          "Description": "支持Response API调用方式",
+          "CapabilityName": "ResponsesAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/responses' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"hy4-preview\",\n    \"instructions\": \"You are a helpful assistant.\",\n    \"input\": \"你好\",\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "结构化输出",
+          "Description": "模型是否支持结构化输出",
+          "CapabilityName": "StructOutput",
+          "CapabilityValue": "true"
+        }
+      ],
+      "extraModelIds": [],
+      "planDisplayName": "Hy4 preview",
+      "zcode": {
+        "contextWindow": 1048576,
+        "maxOutputTokens": 65536,
+        "reasoningLevels": [
+          "none",
+          "high"
+        ],
+        "selected": true,
+        "order": 3
+      }
+    },
+    {
+      "displayName": "MiMo-V2.6-Flash",
+      "modelName": "MiMo-V2.6-Flash",
+      "primaryModelId": "mimo-v2.6-flash",
+      "modelIds": [
+        "mimo-v2.6-flash"
+      ],
+      "description": "全模态、高智能、低成本的高效推理模型。面向专业办公中的高频调用与规模化任务的最佳均衡之选。",
+      "summary": "全模态、高智能、低成本的高效推理模型，面向专业办公中的高频调用与规模化任务的最佳均衡之选。",
+      "brand": "Xiaomi MIMO",
+      "modelType": "Text",
+      "tags": [
+        "深度思考",
+        "文本生成",
+        "多模态理解"
+      ],
+      "status": "online",
+      "releaseAt": "2026-09-22T08:00:00+08:00",
+      "updatedAt": "2026-10-19T23:19:38.339+08:00",
+      "spec": {
+        "TPM": "1000000",
+        "QPM": "60",
+        "MaxOutputToken": "128k",
+        "ContextLength": "1024K"
+      },
+      "normalized": {
+        "contextWindow": 1048576,
+        "maxInputTokens": null,
+        "maxOutputTokens": 131072
+      },
+      "charging": [
+        {
+          "Type": "Uniform",
+          "Name": "",
+          "ChargingItems": [
+            {
+              "PriceName": "Input",
+              "DisplayName": "输入",
+              "Price": "1",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Output",
+              "DisplayName": "输出",
+              "Price": "2",
+              "PriceUnit": "元/百万tokens"
+            },
+            {
+              "PriceName": "Cache",
+              "DisplayName": "缓存命中",
+              "Price": "0.02",
+              "PriceUnit": "元/百万tokens"
+            }
+          ],
+          "ChargeUnit": "TOKEN"
+        }
+      ],
+      "freeTrial": {
+        "CapacitySize": 1000000,
+        "Unit": "token",
+        "ValidityDays": 90
+      },
+      "apiReference": null,
+      "capabilities": [
+        {
+          "DisplayName": "Anthropic API",
+          "Description": "支持Anthropic API调用方式",
+          "CapabilityName": "AnthropicAPI",
+          "CapabilityValue": "curl -s -X POST 'https://tokenhub.tencentmaas.com/v1/messages' \\\n-H 'Content-Type: application/json' \\\n-H 'anthropic-version: 2023-06-01' \\\n-H \"x-api-key: YOUR_API_KEY\" \\\n-d '{\n\"model\": \"mimo-v2.6-flash\",\n\"messages\": [{ \"role\": \"user\", \"content\": \"你好\" }]\n}'"
+        },
+        {
+          "DisplayName": "cache缓存",
+          "Description": "模型是否支持缓存",
+          "CapabilityName": "Cache",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Completions API",
+          "Description": "支持 OpenAI 兼容的 Chat Completions API 调用方式",
+          "CapabilityName": "CompletionsAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/chat/completions' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"mimo-v2.6-flash\",\n    \"messages\": [\n      {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n      {\"role\": \"user\", \"content\": \"你好\"}\n    ],\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "深度思考",
+          "Description": "模型是否支持深度思考",
+          "CapabilityName": "DeepThink",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Function Calling",
+          "Description": "模型是否支持函数调用",
+          "CapabilityName": "FunctionCall",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "图片输入",
+          "Description": "模型是否支持图片输入",
+          "CapabilityName": "InputImage",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输入",
+          "Description": "模型是否支持文本输入",
+          "CapabilityName": "InputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "视频输入",
+          "Description": "模型是否支持视频输入",
+          "CapabilityName": "InputVideo",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "文本输出",
+          "Description": "模型是否支持文本输出",
+          "CapabilityName": "OutputText",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "Response API",
+          "Description": "支持Response API调用方式",
+          "CapabilityName": "ResponsesAPI",
+          "CapabilityValue": "curl -X POST 'https://tokenhub.tencentmaas.com/v1/responses' \\\n  -H 'Authorization: Bearer YOUR_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n    \"model\": \"mimo-v2.6-flash\",\n    \"instructions\": \"You are a helpful assistant.\",\n    \"input\": \"你好\",\n    \"stream\": false\n  }'"
+        },
+        {
+          "DisplayName": "结构化输出",
+          "Description": "模型是否支持结构化输出",
+          "CapabilityName": "StructOutput",
+          "CapabilityValue": "true"
+        },
+        {
+          "DisplayName": "可切换",
+          "Description": "模型深度思考为可切换模式",
+          "CapabilityName": "ThinkTypeSwitchable",
+          "CapabilityValue": "true"
+        }
+      ],
+      "extraModelIds": [],
+      "planDisplayName": "MiMo-V2.6-Flash",
+      "zcode": {
+        "contextWindow": 1048576,
+        "maxOutputTokens": 131072,
+        "reasoningLevels": [
+          "disabled",
+          "enabled"
+        ],
+        "selected": true,
+        "order": 4
+      }
+    }
+  ],
+  "zcodeProvider": {
+    "providerId": "tencent-token-plan",
+    "providerName": "腾讯云 Token Plan",
+    "baseUrl": "https://tokenhub.tencentmaas.com/plan/anthropic",
+    "legacyBaseUrl": "https://api.lkeap.cloud.tencent.com/plan/anthropic",
+    "modelOrder": [
+      "deepseek/deepseek-flash",
+      "glm-5.3-flash",
+      "hy4-preview",
+      "mimo-v2.6-flash",
+      "minimax-m3",
+      "glm-5.3",
+      "kimi-k3"
+    ],
+    "excludedModelIds": [
+      "deepseek-v4-flash-202605",
+      "deepseek-v4-pro-202606",
+      "glm-5.2",
+      "minimax-m2.7",
+      "kimi-k2.7-code",
+      "auto",
+      "tc-code-latest"
+    ],
+    "orderingRationale": "按性价比排序：deepseek/deepseek-flash、glm-5.3-flash、hy4-preview、mimo-v2.6-flash 靠前；minimax-m3 其次；GLM-5.3、Kimi K3 靠后。按用户要求移除旧版 DeepSeek Pro/Flash、GLM-5.1/5.2、MiniMax-M2.7、Kimi K2.7 Code，以及 Auto/tc-code-latest。"
+  }
+}
